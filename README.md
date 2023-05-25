@@ -13,3 +13,8 @@
 
 Unit tests:         Mainnet-fork (if using an oracle --> development with mocks)
 Integration test:   Sepolia
+
+
+### Aave developer docs:
+
+https://docs.aave.com/developers/deployed-contracts/v3-testnet-addresses
