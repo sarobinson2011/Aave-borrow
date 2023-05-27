@@ -22,25 +22,45 @@ def main():
     tx.wait(1)
 
     print("\n--> Successfully deposited!")
-
     borrowable_eth, total_debt = get_borrowable_data(lending_pool, account)
     # print(f"\n--> available to borrow: {borrowable_eth} WETH")
     # print(f"\n--> already borrowed: {total_debt} WETH")
 
 
-def get_borrowable_data(lending_pool, account):
+# ----->        ORIGINAL code from course
+# def get_borrowable_data(lending_pool, account):
+#     (
+#         total_collateral_base,  # collateral
+#         total_debt_base,  # credit balance owed
+#         available_borrows_base,  # available credit
+#         current_liquidation_threshold,
+#         ltv,
+#         health_factor,
+#     ) = lending_pool.getUserAccountData(account)
+
+#     # available_borrows_base = Web3.fromWei(available_borrows_base, "ether")
+#     # total_collateral_base = Web3.fromWei(total_collateral_base, "ether")
+#     # total_debt_base = Web3.fromWei(total_debt_base, "ether")
+#     # print(f"\n--> You have {total_collateral_base} worth of ETH deposited")
+#     # print(f"\n--> You have {total_debt_base} worth of ETH borrowed")
+#     # print(f"\n--> You have {available_borrows_base} worth of ETH available to borrow\n")
+#     return (available_borrows_base, total_debt_base)
+
+#  ------>  NEW testing code
+def get_borrowable_data(account):
+    lending_pool = "0x87870Bca3F3fD6335C3F4ce8392D69350B4fA4E2"
     (
-        total_collateral_base,
-        total_debt_base,
-        available_borrows_base,
+        total_collateral_base,  # collateral
+        total_debt_base,  # credit balance owed
+        available_borrows_base,  # available credit
         current_liquidation_threshold,
         ltv,
         health_factor,
     ) = lending_pool.getUserAccountData(account)
 
-    available_borrows_base = Web3.fromWei(available_borrows_base, "ether")
+    # available_borrows_base = Web3.fromWei(available_borrows_base, "ether")
     # total_collateral_base = Web3.fromWei(total_collateral_base, "ether")
-    total_debt_base = Web3.fromWei(total_debt_base, "ether")
+    # total_debt_base = Web3.fromWei(total_debt_base, "ether")
     print(f"\n--> You have {total_collateral_base} worth of ETH deposited")
     print(f"\n--> You have {total_debt_base} worth of ETH borrowed")
     print(f"\n--> You have {available_borrows_base} worth of ETH available to borrow\n")
